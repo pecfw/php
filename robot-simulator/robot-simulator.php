@@ -59,6 +59,8 @@ class Robot {
         $this::advance();
       } elseif($instructionArray[$i] == 'R') {
         $this::turnRight();
+      } else {
+        throw new InvalidArgumentException();
       }
     }
   }
