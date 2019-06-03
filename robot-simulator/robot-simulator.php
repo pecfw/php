@@ -24,6 +24,7 @@ class Robot {
     } else {
       $this->direction = self::DIRECTION_NORTH;
     }
+    return $this;
   }
 
   function turnLeft() {
@@ -36,6 +37,7 @@ class Robot {
     } else {
       $this->direction =self::DIRECTION_NORTH;
     }
+    return $this;
   }
 
   function advance() {
@@ -48,6 +50,7 @@ class Robot {
     } else {
       $this->position[0]--;
     }
+    return $this;
   }
 
   function instructions($instructions) {

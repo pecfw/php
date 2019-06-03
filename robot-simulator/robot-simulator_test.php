@@ -146,21 +146,21 @@ class RobotSimulatorTest extends PHPUnit\Framework\TestCase
     }
 
 
-    // /**
-    //  * Optional instructions chaining
-    //  */
-    // public function testInstructionsChaining()
-    // {
-    //     $robot = new Robot([0, 0], Robot::DIRECTION_NORTH);
-    //     $robot->turnLeft()
-    //         ->advance()
-    //         ->advance()
-    //         ->advance()
-    //         ->turnRight()
-    //         ->advance()
-    //         ->turnLeft()
-    //         ->advance();
-    //     $this->assertEquals([-4, 1], $robot->position);
-    //     $this->assertEquals(Robot::DIRECTION_WEST, $robot->direction);
-    // }
+    /**
+     * Optional instructions chaining
+     */
+    public function testInstructionsChaining()
+    {
+        $robot = new Robot([0, 0], Robot::DIRECTION_NORTH);
+        $robot->turnLeft()
+            ->advance()
+            ->advance()
+            ->advance()
+            ->turnRight()
+            ->advance()
+            ->turnLeft()
+            ->advance();
+        $this->assertEquals([-4, 1], $robot->position);
+        $this->assertEquals(Robot::DIRECTION_WEST, $robot->direction);
+    }
 }
