@@ -1,18 +1,5 @@
 <?php
 
-function twoOfAKind($total, $array, $coins) {
-  if($total == 0) {
-    array_push($array, $coins[$j]);
-    sort($array);
-    $result = recursion($array, 0);
-    return $result;
-  } elseif($total > 0) {
-    array_push($array, $coins[$j]);
-    $amount = $amount - $coins[$j];
-    
-  }
-}
-
 function recursion($coins, $amount) {
   $array = array();
   $newCoins = array();
@@ -25,8 +12,6 @@ function recursion($coins, $amount) {
   for ($j = $start; $j >= 0; $j--) {
     $total = $amount - $coins[$j];
 
-    // if($total < 0) {
-    //   $newCoins = array_diff($coins, array($coins[$j]));
     if($total == 0) {
       array_push($array, $coins[$j]);
       sort($array);
