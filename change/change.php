@@ -1,35 +1,45 @@
 <?php
 
-function recursion($coins, $amount) {
-  $array = array();
-  $newCoins = array();
-
+function recursion($coins, $amount, $resultArray) {
   if($amount == 0) {
-    return $coins;
-  } 
-  $start = sizeof($coins) - 1;
+    return [];
+  }
 
-  for ($j = $start; $j >= 0; $j--) {
-    $total = $amount - $coins[$j];
+  if(in_array($amount, $resultArray)) {
+    return $resultArray[$amount];
+  }
 
-    if($total == 0) {
-      array_push($array, $coins[$j]);
-      sort($array);
-      $result = recursion($array, 0);
-      return $result;
-    } elseif($total > 0) {
-      array_push($array, $coins[$j]);
-      $amount = $amount - $coins[$j];
+  $min = 99999999999999;
+  for($i=0; $i < sizeof($coins); $i++) {
+    if($coins[$i] > $amount) {
+      continue;
+    }
+
+    $value = recursion($amount - $coins[$i], $coins, $resultArray);
+
+    if($value < $min) {
+      $min = $val;
     }
   }
-  $newCoins = array_diff($coins, array($array[0]));
-  sort($newCoins);
-  $result2 = recursion($newCoins, $amount);
-  return $result2;
+
+  $min = ($min == 99999999999999 ? $min : $min + 1);
+
+  //set in the array
+  //return the array
 }
 
 function findFewestCoins($coins, $amount) {
-  $result = recursion($coins, $amount);
-  echo $result[0];
+  $coinsLength = sizeof($coins);
+  $result = [];
+
+  $i = $coinsLength - 1;
+  while($i >= 0) {
+    while($amount >= $coins[$i]) {
+      $amount -= $coins[$i];
+      array_push($result, $coins[$i]);
+    }
+    $i -= 1;
+  }
+  sort($result);
   return $result;
 }

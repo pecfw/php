@@ -6,7 +6,6 @@ function recursion($coins, $amount, $resultArray) {
   }
 
   if(sizeof($coins) == 0) {
-    echo 'HERRRRRE';
     $newCoins = array_diff($coins, array($resultArray[0]));
     sort($newCoins);
     $result2 = recursion($newCoins, $amount, $resultArray);
